@@ -1,6 +1,7 @@
 package com.fastus.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Tom - 14.01.2021
@@ -22,11 +23,22 @@ public class Recipe {
     //todo add
     //private Difficulty difficulty;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
+
     @Lob
     private Byte [] image;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 
     public String getDescription() {
         return description;
