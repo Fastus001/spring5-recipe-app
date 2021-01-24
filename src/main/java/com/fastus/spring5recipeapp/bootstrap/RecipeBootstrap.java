@@ -124,11 +124,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "Feel free to experiment! One classic Mexican guacamole has pomegranate seeds and chunks of peaches in it (a Diana Kennedy favorite). Try guacamole with added pineapple, mango, or strawberries.\n" +
                 "The simplest version of guacamole is just mashed avocados with salt. Don't let the lack of availability of other ingredients stop you from making guacamole.\n" +
                 "To extend a limited supply of avocados, add either sour cream or cottage cheese to your guacamole dip. Purists may be horrified, but so what? It tastes great.\n" +
-                "\n" +
-                "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
 
         guacNotes.setRecipe(guacRecipe);
+        guacRecipe.setNotes(guacNotes);
+        guacRecipe.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
+        guacRecipe.setServings(4);
+        guacRecipe.setSource("Simply Recipes");
 
         guacRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom ));
         guacRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(".5"), teaspoon ));
