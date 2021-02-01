@@ -28,6 +28,8 @@ class IngredientServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+
+
     @Mock
     UnitOfMeasureRepository unitOfMeasureRepository;
 
@@ -107,6 +109,26 @@ class IngredientServiceImplTest {
         assertEquals(Long.valueOf(3L),savedCommand.getId());
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, times(1)).save(any(Recipe.class));
+
+    }
+
+    @Test
+    void testDeleteById(){
+        Recipe recipe = new Recipe();
+        Ingredient ingredient = new Ingredient();
+        ingredient.setId(3L);
+        recipe.addIngredient(ingredient);
+        ingredient.setRecipe(recipe);
+        Optional<Recipe>recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        //when
+        ingredientService.deleteById(1L,3L);
+
+        //then
+        verify(recipeRepository,times(1)).findById(anyLong());
+        verify(recipeRepository,times(1)).save(any(Recipe.class));
 
     }
 }
