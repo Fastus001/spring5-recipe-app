@@ -40,7 +40,7 @@ public class IngredientServiceImpl implements IngredientService{
 
         Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
 
-        if(recipeOptional.isEmpty()){
+        if(!recipeOptional.isPresent()){
             //todo impl error handling
             log.error("recipe id not found. Id: " + recipeId);
         }
@@ -52,7 +52,7 @@ public class IngredientServiceImpl implements IngredientService{
                 .map(ingredientToIngredientCommand::convert)
                 .findFirst();
 
-        if(ingredientCommandOptional.isEmpty()){
+        if(!ingredientCommandOptional.isPresent()){
             //todo impl error handling
             log.error("Ingredient id not found. Id: " + ingredientId);
         }
@@ -65,7 +65,7 @@ public class IngredientServiceImpl implements IngredientService{
 
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
 
-        if(recipeOptional.isEmpty()){
+        if(!recipeOptional.isPresent()){
             //todo toss error if not found!
 
             log.error("Recipe not found for id:" + command.getRecipeId());
@@ -101,7 +101,7 @@ public class IngredientServiceImpl implements IngredientService{
                             .findFirst();
 
             //check by description
-            if(savedIngredientOptional.isEmpty()){
+            if(!savedIngredientOptional.isPresent()){
                 //not totally safe... but best guess
                 savedIngredientOptional = savedRecipe.getIngredients().stream()
                         .filter(recipeIngredients->recipeIngredients.getDescription().equals(command.getDescription()))
