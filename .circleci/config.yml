@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: Send to CodeCov
-          command: bash <(curl -s https://codecov.io/bash)
+          command: bash <(curl -s https://codecov.io/bash) -v
 
 workflows:
   # Below is the definition of your workflow.
