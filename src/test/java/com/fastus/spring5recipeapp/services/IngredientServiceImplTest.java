@@ -43,7 +43,7 @@ class IngredientServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
 
         ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand,ingredientCommandToIngredient,
                 recipeRepository,unitOfMeasureRepository);

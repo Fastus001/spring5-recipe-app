@@ -36,7 +36,7 @@ public class ImageControllerTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
 
         controller = new ImageController(imageService,recipeService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
